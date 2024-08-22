@@ -18,7 +18,7 @@ func main() {
 	runtime.SetBlockProfileRate(5)
 
 	pyroscope.Start(pyroscope.Config{
-		ApplicationName: "random.primes.app",
+		ApplicationName: "service1.wait",
 
 		// replace this with the address of pyroscope server
 		ServerAddress:     "https://profiles-prod-003.grafana.net",
@@ -31,7 +31,7 @@ func main() {
 		// you can provide static tags via a map:
 		Tags: map[string]string{
 			"hostname":           os.Getenv("HOSTNAME"),
-			"service_git_ref":    "5a2ad1704c1ff5deda1eba5cc7c50f4297f5d788",
+			"service_git_ref":    "d374cfb406d9debbfc4769d5b2e92630732b3152",
 			"service_repository": "https://github.com/alsoba13/random_wait",
 			"service_path":       "/",
 		},
