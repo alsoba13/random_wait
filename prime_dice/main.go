@@ -1,14 +1,14 @@
 package main
 
 import (
-	"context"
 	"fmt"
+	"github.com/fxtlabs/primes"
 	"github.com/grafana/pyroscope-go"
 	"math/rand"
 	"os"
-	"random-wait/wait"
+	"random-wait/dice"
 	"runtime"
-	"strconv"
+	"time"
 )
 
 func get_a_number() int {
@@ -22,7 +22,7 @@ func main() {
 	runtime.SetBlockProfileRate(5)
 
 	pyroscope.Start(pyroscope.Config{
-		ApplicationName: "random.wait.app",
+		ApplicationName: "prime.dice.app",
 
 		// replace this with the address of pyroscope server
 		ServerAddress:     "https://profiles-prod-003.grafana.net",
@@ -58,10 +58,13 @@ func main() {
 	})
 
 	for {
-		number := get_a_number()
-		pyroscope.TagWrapper(context.Background(), pyroscope.Labels("number", strconv.Itoa(number)), func(c context.Context) {
-			fmt.Println(number)
-			wait.Wait(number)
-		})
+		sum := 1
+		for sum == 1 || primes.IsPrime(sum) {
+			result := dice.Roll()
+			sum += result
+			fmt.Printf("Rolled %d. Sum: %d\n", result, sum)
+		}
+		fmt.Printf("%d isn't prime. Starting over!\n", sum)
+		time.Sleep(time.Second)
 	}
 }

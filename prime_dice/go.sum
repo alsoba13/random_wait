@@ -1,0 +1,8 @@
+github.com/fxtlabs/primes v0.0.0-20150821004651-dad82d10a449 h1:HOYnhuVrhAVGKdg3rZapII640so7QfXQmkLkefUN/uM=
+github.com/fxtlabs/primes v0.0.0-20150821004651-dad82d10a449/go.mod h1:i+vbdOOivRRh2j+WwBkjZXloGN/+KAqfKDwNfUJeugc=
+github.com/grafana/pyroscope-go v1.1.2 h1:7vCfdORYQMCxIzI3NlYAs3FcBP760+gWuYWOyiVyYx8=
+github.com/grafana/pyroscope-go v1.1.2/go.mod h1:HSSmHo2KRn6FasBA4vK7BMiQqyQq8KSuBKvrhkXxYPU=
+github.com/grafana/pyroscope-go/godeltaprof v0.1.8 h1:iwOtYXeeVSAeYefJNaxDytgjKtUuKQbJqgAIjlnicKg=
+github.com/grafana/pyroscope-go/godeltaprof v0.1.8/go.mod h1:2+l7K7twW49Ct4wFluZD3tZ6e0SjanjcUUBPVD/UuGU=
+github.com/klauspost/compress v1.17.9 h1:6KIumPrER1LHsvBVuDa0r5xaG0Es51mhhB9BQB2qeMA=
+github.com/klauspost/compress v1.17.9/go.mod h1:Di0epgTjJY877eYKx5yC51cX2A2Vl2ibi7bDH9ttBbw=
