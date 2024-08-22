@@ -1,29 +1,15 @@
 package main
 
 import (
+	"context"
 	"fmt"
 	"github.com/grafana/pyroscope-go"
 	"math/rand"
-	"time"
 	"os"
+	"random-wait/wait"
 	"runtime"
-	"context"
 	"strconv"
 )
-
-func wait(number int) {
-	if number%5 == 0 {
-		start := time.Now()
-		for {
-			now := time.Now()
-			if now.Sub(start) > time.Second {
-				break
-			}
-		}
-	} else {
-		time.Sleep(time.Second)
-	}
-}
 
 func get_a_number() int {
 	return rand.Intn(5)
@@ -36,11 +22,11 @@ func main() {
 	runtime.SetBlockProfileRate(5)
 
 	pyroscope.Start(pyroscope.Config{
-		ApplicationName: "random.wait.golang.app",
-		
+		ApplicationName: "random.wait.app",
+
 		// replace this with the address of pyroscope server
-		ServerAddress: "https://profiles-prod-003.grafana.net",
-		BasicAuthUser:     "",
+		ServerAddress:     "https://profiles-prod-003.grafana.net",
+		BasicAuthUser:     "1012458",
 		BasicAuthPassword: "",
 
 		// you can disable logging by setting this to nil
@@ -48,9 +34,10 @@ func main() {
 
 		// you can provide static tags via a map:
 		Tags: map[string]string{
-			"hostname": os.Getenv("HOSTNAME"),
-			"service_git_ref":    "",
-      		"service_repository": "",
+			"hostname":           os.Getenv("HOSTNAME"),
+			"service_git_ref":    "b08f3dfd161eed1d385a616f4a4720f67e269918",
+			"service_repository": "https://github.com/alsoba13/random_wait",
+			"service_path":       "/",
 		},
 
 		ProfileTypes: []pyroscope.ProfileType{
@@ -74,7 +61,7 @@ func main() {
 		number := get_a_number()
 		pyroscope.TagWrapper(context.Background(), pyroscope.Labels("number", strconv.Itoa(number)), func(c context.Context) {
 			fmt.Println(number)
-			wait(number)
+			wait.Wait(number)
 		})
 	}
 }
