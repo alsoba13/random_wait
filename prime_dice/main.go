@@ -40,7 +40,7 @@ func main() {
 		// you can provide static tags via a map:
 		Tags: map[string]string{
 			"hostname":           os.Getenv("HOSTNAME"),
-			"service_git_ref":    "d374cfb406d9debbfc4769d5b2e92630732b3152",
+			"service_git_ref":    "90d38788714a82cb1a6367511469df4c6d6b1a39",
 			"service_repository": "https://github.com/alsoba13/random_wait",
 			"service_path":       "/",
 		},
